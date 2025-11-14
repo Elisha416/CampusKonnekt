@@ -7,14 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.campuskonnekt.navigation.AppNavigation
-import com.campuskonnekt.ui.theme.CUEACampusKonnektTheme
+import com.example.campuskonnekt.navigation.AppNavigation
+import com.example.campuskonnekt.theme.CUEACampusConnectTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CUEACampusCKonnektTheme {
+            CUEACampusConnectTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

@@ -26,7 +26,18 @@ fun RegisterScreen(
     onRegisterSuccess: () -> Unit,
     viewModel: AuthViewModel = viewModel()
 ) {
-    // ... existing code ...
+    val authState by viewModel.authState.collectAsState()
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+    var confirmPassword by remember { mutableStateOf("") }
+    var confirmPasswordVisible by remember { mutableStateOf(false) }
+    var displayName by remember { mutableStateOf("") }
+    var major by remember { mutableStateOf("") }
+
+    val years = listOf("First Year", "Second Year", "Third Year", "Fourth Year", "Postgraduate")
+    var expanded by remember { mutableStateOf(false) }
+    var year by remember { mutableStateOf(years[0]) }
 
     Column(
         modifier = Modifier
@@ -38,7 +49,7 @@ fun RegisterScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Icon(
-            Icons.Default.School,
+            Icons.Filled.School,
             contentDescription = null,
             modifier = Modifier.size(60.dp),
             tint = MaterialTheme.colorScheme.primary
@@ -100,7 +111,7 @@ fun RegisterScreen(
             onValueChange = { major = it },
             label = { Text("Major") },
             leadingIcon = {
-                Icon(Icons.Default.School, contentDescription = null)
+                Icon(Icons.Filled.School, contentDescription = null)
             },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true

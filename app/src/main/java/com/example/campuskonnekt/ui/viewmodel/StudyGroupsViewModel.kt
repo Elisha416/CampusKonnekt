@@ -53,6 +53,7 @@ class StudyGroupsViewModel : ViewModel() {
                 courseName, courseCode, meetingTime, location, description
             ).fold(
                 onSuccess = {
+                    // No need to manually add, flow will update
                     _groupsState.value = _groupsState.value.copy(isLoading = false)
                 },
                 onFailure = { exception ->
@@ -65,7 +66,7 @@ class StudyGroupsViewModel : ViewModel() {
         }
     }
 
-    fun toggleMembership(groupId: String) {
+    fun joinGroup(groupId: String) {
         viewModelScope.launch {
             repository.toggleMembership(groupId).fold(
                 onSuccess = {

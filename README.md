@@ -39,13 +39,7 @@ To get a local copy up and running, follow these simple steps.
 4.  **Build and Run:**
     Sync the Gradle files and run the application on an emulator or a physical device.
 
-## 📸 Screenshots
 
-*(You can add screenshots here to showcase the app's features and UI)*
-
-| Feed Screen | Profile Screen | Events Screen |
-| :---: | :---: | :---: |
-| *(image/gif)* | *(image/gif)* | *(image/gif)* |
 
 ## 🤝 Contributing
 
@@ -56,4 +50,3 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 Distributed under the MIT License. You can create a `LICENSE` file with the details if you wish.
 
 ---
-*This README was generated with assistance from Google's AI.*

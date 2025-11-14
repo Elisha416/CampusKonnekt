@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.campuskonnekt.data.model.StudyGroup
 import com.example.campuskonnekt.ui.viewmodel.StudyGroupsViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -77,8 +78,12 @@ fun StudyGroupsScreen(viewModel: StudyGroupsViewModel = viewModel()) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StudyGroupCard(group: StudyGroup, onJoinClick: () -> Unit) {
+    val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+    val isMember = group.memberIds.contains(currentUserId)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -160,9 +165,27 @@ fun StudyGroupCard(group: StudyGroup, onJoinClick: () -> Unit) {
 
             Button(
                 onClick = onJoinClick,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = if (isMember) {
+                    ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                } else {
+                    ButtonDefaults.buttonColors()
+                }
             ) {
-                Text("Join Group")
+                if (isMember) {
+                    Icon(
+                        Icons.Default.Check,
+                        contentDescription = null,
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
+                    )
+                    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+                    Text("Joined")
+                } else {
+                    Text("Join Group")
+                }
             }
         }
     }

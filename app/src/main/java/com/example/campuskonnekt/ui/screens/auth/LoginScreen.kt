@@ -3,6 +3,7 @@ package com.example.campuskonnekt.ui.screens.auth
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
@@ -44,7 +45,7 @@ fun LoginScreen(
     ) {
         // CUEA Logo placeholder - Add Icon or Image here
         Icon(
-            Icons.Default.School,
+            Icons.Default.AccountBalance,
             contentDescription = null,
             modifier = Modifier.size(80.dp),
             tint = MaterialTheme.colorScheme.primary
